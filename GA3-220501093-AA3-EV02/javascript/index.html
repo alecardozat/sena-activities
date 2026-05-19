@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AA3-EV02</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <section>
+            <h2>Ejercicio 1</h2>
+
+        </section>
+        <section>
+            <h2>Ejercicio 2</h2>
+            <p>Edad de 10 personas</p>
+            <div class="edades">
+                <span>Edades</span>
+                <table id="edad-table">
+                    <thead>
+                        <tr>
+                            <th>Menores</th>
+                            <th>Mayores</th>
+                            <th>Adultos mayores (60+)</th>
+                            <th>Edad mínima</th>
+                            <th>Edad máxima</th>
+                            <th>Promedio de edad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td id="cell-menores">0</td>
+                            <td id="cell-mayores">0</td>
+                            <td id="cell-adultos-mayores">0</td>
+                            <td id="cell-minima">0</td>
+                            <td id="cell-maxima">0</td>
+                            <td id="cell-promedio">0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="input-edades">
+                <form id="edad-form">
+                    <label for="edad">Ingrese la edad No. <span id="contador-input-edad">1</span></label>
+                    <input type="number" required name="edad" id="edad" min="1" max="120">
+                    <button type="submit">INGRESAR</button>
+                </form>
+            </div>
+        </section>
+        <section>
+            <h2>Ejercicio 3</h2>
+            <div class="vector1">
+                <span>Datos de vector 1</span>
+            </div>
+            <div class="vector2">
+                <span>Datos de vector 2</span>
+            </div>
+            <div class="vector_resultado">
+                <span>Resultado</span>
+            </div>
+        </section>
+        <section>
+            <h2>Ejercicio 4</h2>
+
+        </section>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

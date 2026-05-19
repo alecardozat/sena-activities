@@ -9,6 +9,7 @@ Utilizando el lenguaje JavaScript, desarrollar un programa que dé solución a l
 **Tabla 1**
 
 Área y perímetro de figuras planas
+
 ![alt text](./assets/image.png)
 
 2. Desarrollar un programa que permita almacenar las edades de un grupo de 10 personas en un vector de enteros y luego determine la cantidad de personas que son menores de edad, mayores de edad, cuántos adultos mayores, la edad más baja, la edad más alta y el promedio de edades ingresadas. Para el ejercicio anterior, suponga que un adulto mayor debe tener una edad igual o superior a 60. Debe validar para cada ingreso, que los valores estén en un rango entre 1 y 120 años. En caso de error deberá notificar y solicitar un nuevo valor.
@@ -20,3 +21,70 @@ Utilizando el lenguaje JavaScript, desarrollar un programa que dé solución a l
     **a.** Agregar una persona con los datos que se listan anteriormente.
 
     **b.** Mostrar la información personal de una persona particular por                    medio de su posición en el vector.
+
+
+    ## Soluciones
+
+    2. 
+    ### Pseudocódigo:
+    
+  ```pseudocode
+ALGORITMO calcularDiezEdades;
+VAR
+    Definir edades, i Como Entero
+    Definir menores, mayores, adultosMayores Como Entero
+    Definir minima, maxima, suma Como Entero
+    Definir promedio Como Real
+    Dimension edades[10]    
+
+INICIO
+    menores <- 0
+    mayores <- 0
+    adultosMayores <- 0
+    suma <- 0
+    
+    Para i <- 1 Hasta 10 Con Paso 1 Hacer
+        Escribir "Ingrese la edad de la persona ", i, ":"
+        Leer edades[i]
+        
+        suma <- suma + edades[i]
+        
+        Si edadIngresada < 1 O edadIngresada > 120 Entonces
+            Escribir "Error: La edad debe estar en el rango de 1 a 120 años."
+        FinSi
+
+        Si edades[i] < 18 Entonces
+            menores <- menores + 1
+        Sino
+            mayores <- mayores + 1
+        FinSi
+        
+        Si edades[i] >= 60 Entonces
+            adultosMayores <- adultosMayores + 1
+        FinSi
+    FinPara
+    
+    minima <- edades[1]
+    maxima <- edades[1]
+    
+    Para i <- 2 Hasta 10 Con Paso 1 Hacer
+        Si edades[i] < minima Entonces
+            minima <- edades[i]
+        FinSi
+        Si edades[i] > maxima Entonces
+            maxima <- edades[i]
+        FinSi
+    FinPara
+    
+    promedio <- suma / 10
+
+    Escribir "Menores de edad: ", menores
+    Escribir "Mayores de edad: ", mayores
+    Escribir "Adultos mayores: ", adultosMayores
+    Escribir "Edad mínima: ", minima
+    Escribir "Edad máxima: ", maxima
+    Escribir "Promedio de edades: ", promedio
+FinAlgoritmo
+```
+### Diagrama de flujo
+![alt text](./assets/ejercicio02.png)
