@@ -9,10 +9,32 @@
 </head>
 
 <body>
-    <div class="wrapper">
+    <main>
         <section>
             <h2>Ejercicio 1</h2>
+            <p>Calcular área y perímetro</p>
+            <div class="select-figura">
+                <span>Elegir figura:</span>
+                <select id="figura-selector">
+                    <option value="circulo" selected>Circulo</option>
+                    <option value="cuadrado">Cuadrado</option>
+                    <option value="rectangulo">Rectangulo</option>
+                    <option value="triangulo">Triangulo</option>
+                </select>
+            </div>
+            <div class="diagrama-figura">
+                <canvas width="600" height="400" id="figura"></canvas>
+            </div>
 
+            <div class="figure-actions">
+                <div class="figure-input">
+                    <form id="figure-form"></form>
+                </div>
+                <div class="figure-output">
+                    <p>Área: <span id="area-output">0</span></p>
+                    <p>Perímetro: <span id="perimeter-output">0</span></p>
+                </div>
+            </div>
         </section>
         <section>
             <h2>Ejercicio 2</h2>
@@ -66,7 +88,7 @@
             <h2>Ejercicio 4</h2>
 
         </section>
-    </div>
+    </main>
 
     <script src="main.js"></script>
 </body>

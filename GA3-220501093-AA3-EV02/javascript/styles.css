@@ -17,12 +17,39 @@ body{
     background-color: #ddd;
 }
 
+main{
+    max-width: 900px;
+    margin: 0 auto;
+}
+
 section{
     padding: 1rem;
     background: #fff;
     margin: 1rem 0.5rem;
     border-radius: 12px;
     border: 2px solid #776d6d;
+}
+
+button{
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-family: inherit;
+    font-weight: bold;
+    padding: 6px 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+input{
+    outline: none;
+    font-family: inherit;
+    font-size: 0.8rem;
+}
+
+button:hover{
+    transform: scale(1.08);
 }
 
 h2{
@@ -33,6 +60,51 @@ p{
     font-weight: bold;
     margin-bottom: 0.5rem;
 }
+
+/* EJERCICIO 1 */
+
+#figura-selector{
+    margin: 0.5rem;
+    outline: none;
+    padding: 4px 0;
+    font-family: inherit;
+    font-weight: bold;
+}
+
+#figura{
+    display: block;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 600px;
+    max-height: 400px;
+    margin: 0.5rem auto;
+}
+
+.figure-actions{
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 1rem;
+}
+
+#figure-form{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#figure-form button:hover{
+    transform: scale(1.03);
+}
+
+.figure-output{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 1rem 2rem;
+}
+
+/* EJERCICIO 2 */
 
 .edades{
     text-align: center;
@@ -92,26 +164,4 @@ p{
     display: flex;
     gap: 10px;
     align-items: center;
-}
-
-.input-edades input{
-    outline: none;
-    font-family: inherit;
-    font-size: 0.8rem;
-}
-
-.input-edades button{
-    background-color: var(--primary-color);
-    border: none;
-    border-radius: 8px;
-    color: #fff;
-    font-family: inherit;
-    font-weight: bold;
-    padding: 6px 10px;
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
-
-.input-edades button:hover{
-    transform: scale(1.08);
 }
