@@ -74,6 +74,7 @@
         </section>
         <section>
             <h2>Ejercicio 3</h2>
+            <p>Unión de dos vectores ordenados</p>
             <div class="vectores">
                 <p>Vector 1: <span id="displayV1">[]</span></p>
                 <p>Vector 1: <span id="displayV2">[]</span></p>
@@ -90,7 +91,51 @@
         </section>
         <section>
             <h2>Ejercicio 4</h2>
+            <p>Rating de canciones</p>
+            <form id="form-artist">
+                <div class="inputs">
+                    <div class="person">
+                        <label for="name">Nombre:</label>
+                        <input type="text" name="name" required>
 
+                        <label for="dni">No. identificación:</label>
+                        <input type="number" name="dni" required>
+
+                        <label for="birthdate">Fecha nacimiento:</label>
+                        <input type="date" name="birthdate">
+
+                        <label for="email">Correo electrónico:</label>
+                        <input type="email" name="email">
+
+                        <label for="curr_city">Ciudad de residencia:</label>
+                        <input type="text" name="curr_city">
+
+                        <label for="origen_city">Ciudad de origen:</label>
+                        <input type="text" name="origen_city">
+                    </div>
+
+                    <div class="fav">
+                        <label for="fav_artist">Artista favorito:</label>
+                        <input type="text" name="fav_artist">
+
+                        <label for="song1">Canción favorita No. 1:</label>
+                        <input type="text" name="song1">
+
+                        <label for="song2">Canción favorita No. 2:</label>
+                        <input type="text" name="song2">
+
+                        <label for="song3">Canción favorita No. 3:</label>
+                        <input type="text" name="song3">
+                    </div>
+                </div>
+                <button type="submit">INGRESAR</button>
+            </form>
+            <div class="search-section">
+                <h3>Buscar persona por posición (0 a 5)</h3>
+                <input type="number" id="search-index" min="0" max="5" placeholder="Ingresa posición">
+                <button id="btn-search">Buscar</button>
+            </div>
+            <div id="result-display"></div>
         </section>
     </main>
 

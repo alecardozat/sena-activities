@@ -193,3 +193,40 @@ p{
     font-weight: bold;
     color: red;
 }
+
+/* EJERCICIO 4 */
+
+#form-artist{    
+    text-align: center;
+
+}
+
+.inputs{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.inputs input{
+    padding: 5px 8px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.person, .fav{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+#form-artist button{
+    width: 50%;
+    padding: 8px;
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+#form-artist button:hover{
+    transform: scale(1.03);
+}

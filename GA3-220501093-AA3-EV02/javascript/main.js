@@ -15,29 +15,29 @@ const centerY = canvas.height / 2;
 const FIGURAS = {
     circulo: {
         inputs: ['radio'],
-        calc: (data)=>({area: Math.PI * data.radio**2, perimetro: 2 * Math.PI * data.radio})
+        calc: (data) => ({ area: Math.PI * data.radio ** 2, perimetro: 2 * Math.PI * data.radio })
     },
     cuadrado: {
         inputs: ['lado'],
-        calc: (data)=>({area: data.lado**2, perimetro: 4 * data.lado})
+        calc: (data) => ({ area: data.lado ** 2, perimetro: 4 * data.lado })
     },
     rectangulo: {
         inputs: ['base', 'altura'],
-        calc: (data)=>({area: data.base * data.altura, perimetro: 2 * (data.base + data.altura)})
+        calc: (data) => ({ area: data.base * data.altura, perimetro: 2 * (data.base + data.altura) })
     },
     triangulo: {
         inputs: ['base', 'altura', 'ladoA', 'ladoB'],
-        calc: (data)=>({area: (data.base * data.altura) / 2, perimetro: data.base + data.ladoA + data.ladoB})
+        calc: (data) => ({ area: (data.base * data.altura) / 2, perimetro: data.base + data.ladoA + data.ladoB })
     }
 }
 
-figureInput.addEventListener('submit', (event)=>{
+figureInput.addEventListener('submit', (event) => {
     event.preventDefault();
     const formData = new FormData(figureInput);
     const values = Object.fromEntries(formData.entries());
 
     const numericValues = {};
-    for(let key in values) numericValues[key] = parseFloat(values[key]);
+    for (let key in values) numericValues[key] = parseFloat(values[key]);
 
     const result = FIGURAS[figuraSelector.value].calc(numericValues);
 
@@ -47,26 +47,26 @@ figureInput.addEventListener('submit', (event)=>{
 
 printCircle();
 
-figuraSelector.addEventListener('change', (event)=>{
+figuraSelector.addEventListener('change', (event) => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     const option = event.target.value;
-    switch(option){
+    switch (option) {
         case 'circulo':
             printCircle();
-        break;
+            break;
         case 'cuadrado':
             printSquare();
-        break;
+            break;
         case 'rectangulo':
             printRectangle();
-        break;
+            break;
         case 'triangulo':
             printTriangle();
-        break;
+            break;
     }
 });
 
-function printCircle(){
+function printCircle() {
     updateFigureForm('circulo');
     const radius = 120;
 
@@ -80,14 +80,14 @@ function printCircle(){
     ctx.lineTo(centerX + radius, centerY);
     ctx.stroke();
 
-    ctx.fillText('r',centerX + (radius / 2), centerY-10);
+    ctx.fillText('r', centerX + (radius / 2), centerY - 10);
 }
 
-function printSquare(){
+function printSquare() {
     updateFigureForm('cuadrado');
     const size = 200;
-    const x = centerX - (size/2);
-    const y = centerY - (size/2);
+    const x = centerX - (size / 2);
+    const y = centerY - (size / 2);
 
     ctx.beginPath();
     ctx.rect(x, y, size, size);
@@ -97,12 +97,12 @@ function printSquare(){
     ctx.fillText('a', x + size + 10, centerY + 5);
 }
 
-function printRectangle(){
+function printRectangle() {
     updateFigureForm('rectangulo');
     const width = 300;
     const height = 150;
-    const x = centerX - (width/2);
-    const y = centerY - (height/2);
+    const x = centerX - (width / 2);
+    const y = centerY - (height / 2);
 
     ctx.beginPath();
     ctx.rect(x, y, width, height);
@@ -113,17 +113,17 @@ function printRectangle(){
     ctx.fillText('b', centerX, y + height + 25);
 }
 
-function printTriangle(){
+function printTriangle() {
     updateFigureForm('triangulo');
     const base = 300;
     const height = 200;
 
     const topX = centerX;
-    const topY = centerY - (height/2);
+    const topY = centerY - (height / 2);
 
-    const bottomY = centerY + (height/2);
-    const leftX = centerX - (base/2);
-    const rightX = centerX + (base/2);
+    const bottomY = centerY + (height / 2);
+    const leftX = centerX - (base / 2);
+    const rightX = centerX + (base / 2);
 
     ctx.beginPath();
     ctx.moveTo(topX, topY);
@@ -131,19 +131,19 @@ function printTriangle(){
     ctx.lineTo(rightX, bottomY);
     ctx.closePath();
     ctx.stroke();
-    
+
     ctx.beginPath();
     ctx.moveTo(topX, topY);
     ctx.lineTo(topX, bottomY);
     ctx.stroke();
 
     ctx.fillText('h', topX + 10, centerY + 20);
-    ctx.fillText('a', leftX + (base/4)- 20, centerY - 10);
-    ctx.fillText('b', rightX - (base/4) + 10, centerY - 10);
+    ctx.fillText('a', leftX + (base / 4) - 20, centerY - 10);
+    ctx.fillText('b', rightX - (base / 4) + 10, centerY - 10);
     ctx.fillText('base', centerX, bottomY + 26);
 }
 
-function updateFigureForm(figura){
+function updateFigureForm(figura) {
     figureInput.innerHTML = '';
     const config = FIGURAS[figura];
 
@@ -185,16 +185,16 @@ const cellPromedio = document.getElementById('cell-promedio');
 const edades = [];
 const MAX_PERSONAS = 10;
 
-edadForm.addEventListener('submit', (event)=>{
+edadForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
     const edad = parseInt(inputEdad.value, 10);
     edades.push(edad);
     edadForm.reset();
 
-    if(edades.length < MAX_PERSONAS){
+    if (edades.length < MAX_PERSONAS) {
         contadorEdad.textContent = edades.length + 1;
-    }else{
+    } else {
         inputEdad.disabled = true;
         edadForm.querySelector('button').disabled = true;
         contadorEdad.parentElement.textContent = '10 edades ingresadas';
@@ -202,12 +202,12 @@ edadForm.addEventListener('submit', (event)=>{
     checkEdades();
 });
 
-function checkEdades(){
-    const menores = edades.reduce((prev, curr)=> curr < 18 ? ++prev : prev, 0);
-    const mayores = edades.reduce((prev, curr)=> curr >= 18 ? ++prev : prev, 0);
-    const adultosMayores = edades.reduce((prev, curr)=> curr >= 60 ? ++prev : prev, 0);
+function checkEdades() {
+    const menores = edades.reduce((prev, curr) => curr < 18 ? ++prev : prev, 0);
+    const mayores = edades.reduce((prev, curr) => curr >= 18 ? ++prev : prev, 0);
+    const adultosMayores = edades.reduce((prev, curr) => curr >= 60 ? ++prev : prev, 0);
 
-    const minima = edades.reduce((prev, curr)=> prev < curr ? prev : curr, edades[0]);
+    const minima = edades.reduce((prev, curr) => prev < curr ? prev : curr, edades[0]);
     const maxima = edades.reduce((prev, curr) => prev > curr ? prev : curr, edades[0]);
     const promedio = edades.reduce((prev, curr) => prev + curr, 0) / edades.length;
 
@@ -241,7 +241,6 @@ formVectores.addEventListener('submit', (event) => {
         warning.style.visibility = 'hidden';
     }
 
-    // --- Lógica para insertar ---
     if (v1.length < SIZE_VECTOR) {
         if (v1.length > 0 && input <= v1[v1.length - 1]) {
             showVectorAlert();
@@ -259,11 +258,11 @@ formVectores.addEventListener('submit', (event) => {
     }
 
     const totalIngresados = v1.length + v2.length;
-    
+
     if (totalIngresados < (SIZE_VECTOR * 2)) {
         spanCounter.innerText = totalIngresados + 1;
     } else {
-        spanCounter.innerText = "Finalizado"; 
+        spanCounter.innerText = "Finalizado";
     }
 
     if (totalIngresados === (SIZE_VECTOR * 2)) {
@@ -275,24 +274,79 @@ formVectores.addEventListener('submit', (event) => {
     formVectores.reset();
 });
 
-function showVectorAlert(){
+function showVectorAlert() {
     warning.style.visibility = 'visible';
 }
 
-function mezclarVectores(){
+function mezclarVectores() {
     let result = [];
-    let i = 0; // Puntero para arr1
-  let j = 0; // Puntero para arr2
+    let i = 0;
+    let j = 0;
 
-  while (i < v1.length && j < v2.length) {
-    if (v1[i] < v2[j]) {
-      result.push(v1[i]);
-      i++;
-    } else {
-      result.push(v2[j]);
-      j++;
+    while (i < v1.length && j < v2.length) {
+        if (v1[i] < v2[j]) {
+            result.push(v1[i]);
+            i++;
+        } else {
+            result.push(v2[j]);
+            j++;
+        }
     }
-  }
 
     vectorResult.innerText = result.concat(v1.slice(i)).concat(v2.slice(j));
 }
+
+// EJERCICIO 4
+const formArtist = document.getElementById('form-artist');
+const btnSearch = document.getElementById('btn-search');
+const searchIndex = document.getElementById('search-index');
+const resultDisplay = document.getElementById('result-display');
+
+const personas = [];
+const MAX_QUESTERS = 6;  
+
+class Persona {
+    constructor(data){
+        Object.assign(this, data);
+    }
+}
+
+formArtist.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(formArtist);
+    const value = Object.fromEntries(formData.entries());
+    const persona = new Persona(value);
+
+    personas.push(persona);
+
+    if(personas.length === 6){
+        formArtist.querySelectorAll('input').forEach(i => i.disabled = true);
+        formArtist.querySelector('button').disabled = true;
+    }
+    formArtist.reset();
+});
+
+btnSearch.addEventListener('click', () => {
+    const index = parseInt(searchIndex.value);
+    
+    if (isNaN(index) || index < 0 || index >= personas.length) {
+        resultDisplay.innerHTML = `<p style="color:red;">Error: Índice inválido.</p>`;
+        return;
+    }
+
+    const p = personas[index];
+    
+    resultDisplay.innerHTML = `
+        <div class="card">
+            <h4>Información de ${p.name}</h4>
+            <p><strong>Cédula:</strong> ${p.dni}</p>
+            <p><strong>Cédula:</strong> ${p.email}</p>
+            <p><strong>Cédula:</strong> ${p.birthdate}</p>
+            <p><strong>Ciudad de Residencia:</strong> ${p.curr_city}</p>
+            <p><strong>Ciudad de Residencia:</strong> ${p.origen_city}</p>
+            <p><strong>Artista Favorito:</strong> ${p.fav_artist}</p>
+            <p><strong>Canciones:</strong> ${p.song1}, ${p.song2}, ${p.song3}.</p>
+        </div>
+    `;
+});
