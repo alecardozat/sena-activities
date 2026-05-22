@@ -155,6 +155,7 @@ function updateFigureForm(figura){
         input.type = 'number';
         input.name = inputName;
         input.required = true;
+        input.min = 1;
 
         const div = document.createElement('div');
         div.appendChild(label);
@@ -216,4 +217,82 @@ function checkEdades(){
     cellMinima.textContent = minima;
     cellMaxima.textContent = maxima;
     cellPromedio.textContent = promedio.toFixed(2);
+}
+
+// EJERCICIO 3
+const formVectores = document.getElementById('vector-form');
+const inputVector = document.getElementById('input-vector');
+const vectorResult = document.getElementById('resultado-vector');
+const vector1 = document.getElementById('displayV1');
+const vector2 = document.getElementById('displayV2');
+const warning = formVectores.querySelector('.warning');
+const spanCounter = document.getElementById('counter');
+
+
+let v1 = [];
+let v2 = [];
+const SIZE_VECTOR = 5;
+
+formVectores.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const input = parseInt(inputVector.value, 10);
+
+    if (window.getComputedStyle(warning).visibility === 'visible') {
+        warning.style.visibility = 'hidden';
+    }
+
+    // --- Lógica para insertar ---
+    if (v1.length < SIZE_VECTOR) {
+        if (v1.length > 0 && input <= v1[v1.length - 1]) {
+            showVectorAlert();
+            return;
+        }
+        v1.push(input);
+        vector1.innerText = JSON.stringify(v1);
+    } else {
+        if (v2.length > 0 && input <= v2[v2.length - 1]) {
+            showVectorAlert();
+            return;
+        }
+        v2.push(input);
+        vector2.innerText = JSON.stringify(v2);
+    }
+
+    const totalIngresados = v1.length + v2.length;
+    
+    if (totalIngresados < (SIZE_VECTOR * 2)) {
+        spanCounter.innerText = totalIngresados + 1;
+    } else {
+        spanCounter.innerText = "Finalizado"; 
+    }
+
+    if (totalIngresados === (SIZE_VECTOR * 2)) {
+        inputVector.disabled = true;
+        formVectores.querySelector('button').disabled = true;
+        mezclarVectores();
+    }
+
+    formVectores.reset();
+});
+
+function showVectorAlert(){
+    warning.style.visibility = 'visible';
+}
+
+function mezclarVectores(){
+    let result = [];
+    let i = 0; // Puntero para arr1
+  let j = 0; // Puntero para arr2
+
+  while (i < v1.length && j < v2.length) {
+    if (v1[i] < v2[j]) {
+      result.push(v1[i]);
+      i++;
+    } else {
+      result.push(v2[j]);
+      j++;
+    }
+  }
+
+    vectorResult.innerText = result.concat(v1.slice(i)).concat(v2.slice(j));
 }

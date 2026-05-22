@@ -165,3 +165,31 @@ p{
     gap: 10px;
     align-items: center;
 }
+
+/* EJERCICIO 3 */
+
+.vectores{
+    display: grid;
+    gap: 0.8rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 40% 60%;
+}
+
+.vectores div, .vector_resultado{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.vectores span, .vector_resultado span{
+    display: block;
+    margin: 0.5rem;
+    font-weight: bold;
+}
+
+.warning{
+    visibility: hidden;
+    font-weight: bold;
+    color: red;
+}

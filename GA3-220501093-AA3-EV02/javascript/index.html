@@ -74,15 +74,19 @@
         </section>
         <section>
             <h2>Ejercicio 3</h2>
-            <div class="vector1">
-                <span>Datos de vector 1</span>
-            </div>
-            <div class="vector2">
-                <span>Datos de vector 2</span>
+            <div class="vectores">
+                <p>Vector 1: <span id="displayV1">[]</span></p>
+                <p>Vector 1: <span id="displayV2">[]</span></p>
             </div>
             <div class="vector_resultado">
-                <span>Resultado</span>
+                <h3>Resultado: <span id="resultado-vector">[]</span></h3>
             </div>
+            <form id="vector-form">
+                <span class="warning">*El valor debe ser mayor que el anterior</span>
+                <p>Ingresando vector: <span id="counter">1</span></p>
+                <input type="number" required id="input-vector">
+                <button type="submit">AGREGAR</button>
+            </form>
         </section>
         <section>
             <h2>Ejercicio 4</h2>
